@@ -1,0 +1,26 @@
+<h1> Transaction for <%= user.username %> </h1>
+    
+    <div class="row">
+        <div class="col">
+            <p> Here is your list of things to do! </p>
+        </div>
+    <table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>username</th>
+            <th>age</th>
+            <th>number of todos</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% results.map(item => {%>
+            <tr>
+               <td> <%= item._id.username %> </td>
+               <td><%= item._id.age %></td>
+               <td><%= item.total %></td>
+            </tr>
+            
+            <% }) %>
+
+    </tbody>
+</table>

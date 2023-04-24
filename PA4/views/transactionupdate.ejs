@@ -1,0 +1,14 @@
+<pre>
+    <%= JSON.stringify(item,null,5) %>
+</pre>
+<form method="post" action="/transaction">
+    desctiption : <input type="text" name = "description" align = left>
+    <br>
+    category : <input type="text" name = "category" align = left>
+    <br>
+    amount : <input type="text" name = "amount" align = left>
+    <br>
+    date : <input type="date" name = "date" align = left>
+    <br>
+    <input type="submit" value="store">
+</form>

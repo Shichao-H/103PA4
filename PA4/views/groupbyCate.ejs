@@ -1,0 +1,22 @@
+<h1>Transactions Group by Category for <%= user.username %></h1>
+<div class="col">
+    <p> Here is your list of things to do! </p>
+    <p><li><a href = "/transaction">transaction table</a></li>
+    </p>
+</div>
+<table class="table table-bordered table-striped" style="width: 60%">
+    <thead>
+        <tr>
+            <th style="width: 50%">category</th>
+            <th style="width: 50%">amount</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% results.map(item => {%>
+            <tr>
+                <td><%= item._id %></td>
+               <td><%= item.total %></td>
+            </tr>
+            <% }) %>
+    </tbody>
+</table>

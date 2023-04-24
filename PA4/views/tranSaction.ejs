@@ -1,0 +1,70 @@
+<h1> Transaction for <%= user.username %> </h1>
+    
+    <div class="row">
+        <div class="col">
+            <p> Here is your list of things to do! </p>
+        </div>
+        
+        <div class="m-2">
+            <a class="btn btn-lg btn-primary border"
+              href="/transaction/groupbyCate">group by category</a>
+            <a class="btn btn-lg btn-primary border"
+              href="?sortBy=category">sort by category</a>
+            <a class="btn btn-lg btn-primary border"
+              href="?sortBy=amount">sort by amount</a>
+            <a class="btn btn-lg btn-primary border"
+              href="?sortBy=description">sort by description</a>
+            <a class="btn btn-lg btn-primary border"
+              href="?sortBy=date">sort by date</a>
+        </div>
+
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>description</th>
+                    <th>amount</th>
+                    <th>category</th>
+                    <th>date</th>
+                    <th>delete</th>
+                    <th>edit</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% items.forEach(item => { %>
+                    <tr>
+                        <td><%= item.description%></td>
+                        <td><%= item.amount%></td>
+                        <td><%= item.category%></td>
+                        <td><%= item.date.toDateString()%></td>
+                        <td>
+                            <a 
+                            href="transaction/remove/<%= item.id %>">
+                             <i class="bi bi-trash"></i>
+                             </a>      
+                        </td>
+                        <td>
+                            <a 
+                            href="transaction/edit/<%= item.id %>">
+                             <i class="bi bi-pencil-square"></i>
+                             </a>      
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+        <div >
+            <h2> Add a New Transaction </h2>
+            <form method="post" action="/transaction">
+                <input type="text" name = "description" placeholder="description" align = left>
+                <br>
+                <input type="text" name = "category" placeholder="category" align = left>
+                <br>
+                <input type="text" name = "amount" placeholder="amount" align = left>
+                <br>
+                <input type="text" name = "date" placeholder="mm/dd/yyyy" "align = left>
+                <br>
+                <input type="submit" value="store">
+            </form>
+        </div>
+    </div>
+</div>
