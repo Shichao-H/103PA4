@@ -17,38 +17,22 @@ router.get('/transaction',
         const sortby = req.query.sortBy
         let items =[]
         if(sortby == "category"){
-          items = await transactionItem.aggregate(
-            [ 
-              {userId:req.user._id},
-              {$sort:{category:1}},              
-            ])
-            res.render('transaction',{items});
-        }
-        else if(sortby == "date"){
-          items = await transactionItem.aggregate(
-            [ 
-              {userId:req.user._id},
-              {$sort:{date:1}},              
-            ])
-            res.render('transaction',{items});
-        }else if(sortby == "amount"){
-          items = await transactionItem.aggregate(
-            [ 
-              {userId:req.user._id},
-              {$sort:{amount:1}},              
-            ])
-            res.render('transaction',{items});
-        }else if(sortby == "description"){
-          items = await transactionItem.aggregate(
-            [ 
-              {userId:req.user._id},
-              {$sort:{description:1}},              
-            ])
-            res.render('transaction',{items});
-        }else{
+          items = await transactionItem.find({userId:req.user._id}).sort({category:1})
+          res.render('transaction',{items});
+      }
+      else if(sortby == "date"){
+          items = await transactionItem.find({userId:req.user._id}).sort({date:1})
+          res.render('transaction',{items});
+      }else if(sortby == "amount"){
+          items = await transactionItem.find({userId:req.user._id}).sort({amount:1})
+          res.render('transaction',{items});
+      }else if(sortby == "description"){
+          items = await transactionItem.find({userId:req.user._id}).sort({description:1})
+          res.render('transaction',{items});
+      }else{
           items = await transactionItem.find({userId:req.user._id})
-            res.render('transaction',{items});
-        }
+          res.render('transaction',{items});
+      }
         
     }
 )
